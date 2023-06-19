@@ -6,8 +6,16 @@ The Countable Wait Group is a Go package providing a wait group with a counter. 
 
 ## Usage
 
+In your project you'll need to add the package.
+
+```shell
+go get -u github.com/andreimerlescu/go-countable-waitgroup
+```
+
+Here's an example program that uses this package to show you what its capable of. Of course, you should be reviewing the `countable-waitgroup_test.go` to see the implementation details that work, but this will start you on the right path.
+
 ```go
-import "github.com/andreimerlescu/countable_waitgroup"
+import "github.com/andreimerlescu/go-countable-waitgroup"
 
 func main() {
     var wg countable_waitgroup.CountableWaitGroup
