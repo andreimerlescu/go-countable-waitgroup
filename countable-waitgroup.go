@@ -17,10 +17,11 @@ type IWaitGroup interface {
 	Count() int64
 	IsPending() bool
 	PreventAdd()
+	CanAdd() bool
 }
 
 func (cwg *CountableWaitGroup) Add(i int) {
-	if cwg.stopped.Load() == true {
+	if !cwg.CanAdd() {
 		return
 	}
 	atomic.AddInt64(&cwg.cnt, int64(i))
@@ -46,4 +47,8 @@ func (cwg *CountableWaitGroup) IsPending() bool {
 
 func (cwg *CountableWaitGroup) PreventAdd() {
 	cwg.stopped.Store(true)
+}
+
+func (cwg *CountableWaitGroup) CanAdd() bool {
+	return !cwg.stopped.Load()
 }

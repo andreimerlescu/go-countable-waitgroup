@@ -24,6 +24,9 @@ func TestCountableWaitGroup(t *testing.T) {
 
 	wg.Add(1)
 	wg.PreventAdd()
+	if wg.CanAdd() {
+		t.Errorf("CanAdd failed to indicate whether further adds are permitted")
+	}
 	wg.Add(1)
 	if wg.Count() != 1 || !wg.IsPending() {
 		t.Errorf("PreventAdd failed to prevent further adds")
