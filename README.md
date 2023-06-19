@@ -28,22 +28,25 @@ func main() {
 
 ## Functions
 ### `Add(i int)`
-The Add function increments the WaitGroup counter by i. If PreventAdd has been called, this function does nothing.
+The `Add` function increments the WaitGroup counter by i. If PreventAdd has been called, this function does nothing.
 
 ### `Done()`
-The Done function decrements the WaitGroup counter by one.
+The `Done` function decrements the WaitGroup counter by one.
 
 ### `Count() int64`
-The Count function returns the current counter value.
+The `Count` function returns the current counter value.
 
 ### `IsPending() bool`
-The IsPending function returns true if the counter is greater than 0, false otherwise.
+The `IsPending` function returns true if the counter is greater than 0, false otherwise.
 
 ### `PreventAdd()`
-The PreventAdd function sets a flag that prevents further increments of the WaitGroup counter.
+The `PreventAdd` function sets a flag that prevents further increments of the WaitGroup counter.
 
 ### `Wait()`
-The Wait function blocks until the WaitGroup counter is zero.
+The `Wait` function blocks until the WaitGroup counter is zero.
+
+### `CanAdd() bool`
+The `CanAdd` function is responsible for indicating whether the `PreventAdd()` has been invoked or not.
 
 ## Tests
 Run the tests with `go test .`
